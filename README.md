@@ -1,13 +1,15 @@
 # Match Ready Ref
 
-Static 2026/27 referee study site with a single **Quiz** page. Visitors choose Mixed or one of three topics, read a question, and select **See Decision** to reveal the answer. There are no multiple-choice options or self-reported scores.
+Static 2026/27 referee study site with a single **Quiz** page. Visitors choose Mixed or one of five topics, read a question, and select **See Decision** to reveal the answer. There are no multiple-choice options or self-reported scores.
 
 - **The Start and Restart of Play:** 50 questions.
 - **Ball in Play:** 19 questions, including eight that also belong in The Start and Restart of Play.
 - **The Outcome of a Match:** 28 Law 10 questions.
-- **Mixed:** ten random questions from all 89 question records.
+- **Offside:** 73 Law 11 questions, including one that also belongs in The Start and Restart of Play.
+- **Fouls and Misconduct:** 298 Law 12 questions, including 29 also found in earlier topics.
+- **Mixed:** ten random questions from all 430 unique question records.
 
-Each of the 89 question records has its own crawlable HTML answer page linked in `sitemap.xml`. The Quiz page also contains all questions and explanations in its HTML, so it remains readable without JavaScript. The topic filter and mixed selection run in the browser.
+Each of the 430 question records has its own crawlable HTML answer page linked in `sitemap.xml`. The Quiz page also contains all questions and explanations in its HTML, so it remains readable without JavaScript. The topic filter and mixed selection run in the browser.
 
 ## Upload to GitHub Pages
 
@@ -27,7 +29,7 @@ The builder removes old generated question pages whose IDs are absent from the J
 
 ## Sources
 
-The question-and-answer sets were supplied by the site owner from The IFAB's Law 8, Law 9 and Law 10 FAQs. Each answer page links to an official source. Match Ready Ref is independent and not affiliated with or endorsed by The IFAB. Consult the official Laws and competition regulations for on-field decisions.
+The question-and-answer sets were supplied by the site owner from The IFAB's Law 8, Law 9, Law 10, Law 11 and Law 12 FAQs. Each answer page links to an official source. Match Ready Ref is independent and not affiliated with or endorsed by The IFAB. Consult the official Laws and competition regulations for on-field decisions.
 
 ## GA4
 

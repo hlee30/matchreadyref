@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const topic = document.querySelector('#topic');
-  const list = document.querySelector('#quiz');
+  const list = document.querySelector('#quiz-list');
   const count = document.querySelector('#quiz-count');
   if (!topic || !list || !count) return;
   const cards = [...list.querySelectorAll('.quiz-question')];
@@ -33,7 +33,7 @@
     shown = topic.value === 'all' ? shuffle(matching).slice(0, 10) : matching;
     shown.forEach(card => { card.hidden = false; });
     count.textContent = topic.value === 'all'
-      ? `Mixed quiz · ${shown.length} questions from both topics`
+      ? `Mixed quiz · ${shown.length} questions across all topics`
       : `${topic.value} · ${shown.length} questions`;
     window.mrrTrack?.('quiz_start', {
       quiz_topic: topic.value, question_count: shown.length

@@ -1,0 +1,302 @@
+[
+  {
+    "id": "offside-at-the-pass",
+    "law": 11,
+    "topic": "Offside",
+    "question": "An attacker is level with the second-last opponent when a teammate passes forward. The attacker runs beyond that opponent, collects the pass, and scores. What is the decision?",
+    "options": [
+      "Goal",
+      "Indirect free kick for offside",
+      "Direct free kick for the defenders",
+      "Retake the pass"
+    ],
+    "answer": 0,
+    "explanation": "Judge the position when the teammate plays the ball. Being level with the second-last opponent at that moment is onside; moving ahead afterwards does not create an offside offence.",
+    "source": "https://www.theifab.com/laws/latest/offside/"
+  },
+  {
+    "id": "offside-save-rebound",
+    "law": 11,
+    "topic": "Offside",
+    "question": "A striker is in an offside position when a teammate shoots. The goalkeeper saves, the ball rebounds to the striker, and the striker scores. What is the decision?",
+    "options": [
+      "Goal because the goalkeeper touched the ball",
+      "Indirect free kick for offside",
+      "Dropped ball",
+      "Retake the shot"
+    ],
+    "answer": 1,
+    "explanation": "A deliberate save does not reset offside. The striker gains an advantage by playing the rebound after being in an offside position when the teammate shot.",
+    "source": "https://www.theifab.com/laws/latest/offside/"
+  },
+  {
+    "id": "offside-direct-corner",
+    "law": 11,
+    "topic": "Offside",
+    "question": "An attacker receives the ball directly from a teammate’s corner kick while closer to the goal line than the second-last opponent. What is the offside decision?",
+    "options": [
+      "Offside offence",
+      "No offside offence",
+      "Offside only if the attacker scores",
+      "Corner kick retaken"
+    ],
+    "answer": 1,
+    "explanation": "There is no offside offence from receiving the ball directly from a corner kick. Normal offside considerations apply after a subsequent teammate touch.",
+    "source": "https://www.theifab.com/laws/latest/offside/"
+  },
+  {
+    "id": "offside-deliberate-play",
+    "law": 11,
+    "topic": "Offside",
+    "question": "A defender controls an opponent’s pass and deliberately tries to clear it, but miscues the clearance to an attacker who was in an offside position when the opponent passed. There was no save. What is the decision?",
+    "options": [
+      "Always offside because the attacker was ahead",
+      "Play on; the deliberate play resets the offside assessment",
+      "Dropped ball",
+      "Caution the defender"
+    ],
+    "answer": 1,
+    "explanation": "A controlled, deliberate play by the opponent can reset offside even if the clearance is poor. A mere deflection or deliberate save would be different.",
+    "source": "https://www.theifab.com/laws/latest/offside/"
+  },
+  {
+    "id": "goalkeeper-eight-seconds",
+    "law": 12,
+    "topic": "Fouls & misconduct",
+    "question": "The goalkeeper controls the ball with the hands inside the penalty area for more than eight seconds, with no opponent preventing release. What restart follows?",
+    "options": [
+      "Indirect free kick",
+      "Corner kick for the opponents",
+      "Penalty kick",
+      "Dropped ball"
+    ],
+    "answer": 1,
+    "explanation": "Law 12 awards a corner kick to the opponents when the goalkeeper holds the ball under hand or arm control for more than eight seconds. The referee visually counts the final five seconds.",
+    "source": "https://www.theifab.com/laws/latest/fouls-and-misconduct/"
+  },
+  {
+    "id": "preventing-goalkeeper-release",
+    "law": 12,
+    "topic": "Fouls & misconduct",
+    "question": "An opponent blocks a goalkeeper who is trying to release the ball from the hands. The goalkeeper is still holding it. What is the restart if the referee stops play for the opponent’s interference?",
+    "options": [
+      "Corner kick against the goalkeeper",
+      "Indirect free kick for the goalkeeper’s team",
+      "Penalty kick",
+      "Retaken goal kick"
+    ],
+    "answer": 1,
+    "explanation": "An opponent may not prevent a goalkeeper from releasing the ball from the hands. If play is stopped for that offence, award an indirect free kick to the goalkeeper’s team. A caution depends on the opponent’s conduct; it is not automatic.",
+    "source": "https://www.theifab.com/laws/latest/fouls-and-misconduct/"
+  },
+  {
+    "id": "dangerous-play-no-contact",
+    "law": 12,
+    "topic": "Fouls & misconduct",
+    "question": "A player attempts a high kick near an opponent’s head. The opponent pulls back to avoid injury, and there is no contact. The referee stops play. What restart applies?",
+    "options": [
+      "Indirect free kick to the opponent’s team",
+      "Direct free kick",
+      "Penalty kick automatically",
+      "Dropped ball"
+    ],
+    "answer": 0,
+    "explanation": "Playing in a dangerous manner without contact is an indirect-free-kick offence. Contact or another separate offence could change the decision.",
+    "source": "https://www.theifab.com/laws/latest/fouls-and-misconduct/"
+  },
+  {
+    "id": "verbal-offence-restart",
+    "law": 12,
+    "topic": "Fouls & misconduct",
+    "question": "While the ball is in play, a player commits a verbal offence against an opponent and the referee stops play. What is the restart?",
+    "options": [
+      "Direct free kick",
+      "Indirect free kick",
+      "Dropped ball",
+      "Throw-in"
+    ],
+    "answer": 1,
+    "explanation": "All verbal offences are penalised with an indirect free kick. Disciplinary action depends on the nature of the words.",
+    "source": "https://www.theifab.com/laws/latest/fouls-and-misconduct/"
+  },
+  {
+    "id": "penalty-accidental-double-goal",
+    "law": 14,
+    "topic": "Penalty kicks",
+    "question": "At a penalty kick, the ball immediately touches the kicker’s non-kicking foot by accident and enters the goal from the kick. What is the restart?",
+    "options": [
+      "Award the goal",
+      "Retake the penalty kick",
+      "Indirect free kick to the defence",
+      "Goal kick"
+    ],
+    "answer": 1,
+    "explanation": "The 2026/27 Law distinguishes an accidental immediate double touch from a deliberate second play. If this accidental kick enters the goal, retake the penalty kick.",
+    "source": "https://www.theifab.com/laws/latest/the-penalty-kick/"
+  },
+  {
+    "id": "penalty-accidental-double-no-goal",
+    "law": 14,
+    "topic": "Penalty kicks",
+    "question": "At a penalty kick, the ball immediately touches the kicker’s non-kicking leg by accident and misses the goal. What is the restart during normal play?",
+    "options": [
+      "Retake the penalty kick",
+      "Indirect free kick to the defending team",
+      "Goal kick",
+      "Dropped ball"
+    ],
+    "answer": 1,
+    "explanation": "When the accidental immediate double touch does not produce a goal during normal play, the defending team receives an indirect free kick. A shoot-out has a separate recorded-as-missed outcome.",
+    "source": "https://www.theifab.com/laws/latest/the-penalty-kick/"
+  },
+  {
+    "id": "penalty-feint-after-runup",
+    "law": 14,
+    "topic": "Penalty kicks",
+    "question": "The identified penalty taker finishes the run-up, feints to kick the ball, then shoots into the goal. What is the decision?",
+    "options": [
+      "Goal",
+      "Retake and warn the kicker",
+      "Indirect free kick to the defenders and caution the kicker",
+      "Goal kick and caution the goalkeeper"
+    ],
+    "answer": 2,
+    "explanation": "Feinting after the run-up is complete is prohibited. Stop play, caution the kicker, and award an indirect free kick whether or not the ball enters the goal.",
+    "source": "https://www.theifab.com/laws/latest/the-penalty-kick/"
+  },
+  {
+    "id": "shootout-double-touch-miss",
+    "law": 10,
+    "topic": "Shoot-outs",
+    "question": "During a penalty shoot-out, a kicker accidentally touches the ball with the non-kicking foot immediately after kicking it. The ball does not enter the goal. How is the kick recorded?",
+    "options": [
+      "Retaken",
+      "Missed",
+      "Saved",
+      "Cancelled and taken by another player"
+    ],
+    "answer": 1,
+    "explanation": "In a shoot-out, this accidental double touch is recorded as a miss if the ball does not enter the goal; if it enters, the kick is retaken.",
+    "source": "https://www.theifab.com/laws/latest/determining-the-outcome-of-a-match/"
+  },
+  {
+    "id": "delayed-throw-in",
+    "law": 15,
+    "topic": "Restarts",
+    "question": "After the referee signals a five-second countdown for an unfairly delayed throw-in, the team still has not taken it at the end of the count. What happens?",
+    "options": [
+      "Same team retains the throw-in",
+      "Throw-in awarded to the opponents",
+      "Corner kick",
+      "Indirect free kick"
+    ],
+    "answer": 1,
+    "explanation": "The opponents receive the throw-in. A caution is only required if the player excessively delays the restart after possession has changed.",
+    "source": "https://www.theifab.com/laws/latest/the-throw-in/"
+  },
+  {
+    "id": "delayed-goal-kick",
+    "law": 16,
+    "topic": "Restarts",
+    "question": "A goal kick is unfairly delayed. The referee signals the five-second countdown and the ball is still not in play when it ends. What is awarded?",
+    "options": [
+      "Indirect free kick in the goal area",
+      "Corner kick to the opponents",
+      "Goal kick to the opponents",
+      "Retaken goal kick"
+    ],
+    "answer": 1,
+    "explanation": "Under the 2026/27 countdown rule, the opponents are awarded a corner kick when a delayed goal kick has not put the ball in play by the end of the count.",
+    "source": "https://www.theifab.com/laws/latest/the-goal-kick/"
+  },
+  {
+    "id": "throw-in-direct-goal",
+    "law": 15,
+    "topic": "Restarts",
+    "question": "A correctly taken throw-in goes directly into the opposing goal without touching anyone. What is the decision?",
+    "options": [
+      "Goal",
+      "Goal kick to the opponents",
+      "Corner kick",
+      "Retake the throw-in"
+    ],
+    "answer": 1,
+    "explanation": "A goal cannot be scored directly from a throw-in. Directly into the opposing goal means a goal kick.",
+    "source": "https://www.theifab.com/laws/latest/the-throw-in/"
+  },
+  {
+    "id": "goal-kick-own-goal",
+    "law": 16,
+    "topic": "Restarts",
+    "question": "A goal kick travels directly into the kicker’s own goal without any other touch. What is the restart?",
+    "options": [
+      "Own goal",
+      "Retaken goal kick",
+      "Corner kick to the opponents",
+      "Dropped ball"
+    ],
+    "answer": 2,
+    "explanation": "A goal kick can score directly only against the other team. If it directly enters the kicker’s own goal, award the opponents a corner kick.",
+    "source": "https://www.theifab.com/laws/latest/the-goal-kick/"
+  },
+  {
+    "id": "team-below-seven",
+    "law": 3,
+    "topic": "Players",
+    "question": "In an ordinary match with no applicable temporary dismissal or special protocol, one team is reduced to six players. May the match continue?",
+    "options": [
+      "Yes, until half-time",
+      "Yes, if both captains agree",
+      "No",
+      "Only if that team is winning"
+    ],
+    "answer": 2,
+    "explanation": "A match may not start or continue with fewer than seven players, subject to specific exceptions involving temporary dismissals and approved protocols.",
+    "source": "https://www.theifab.com/laws/latest/the-players/"
+  },
+  {
+    "id": "injury-one-minute",
+    "law": 5,
+    "topic": "Referee decisions",
+    "question": "An outfield player receives routine on-field assessment after play is stopped for the injury. No listed exception applies. When may the player re-enter?",
+    "options": [
+      "Immediately at the restart",
+      "After play restarts and one minute has elapsed, with the referee’s permission",
+      "Only at half-time",
+      "Whenever their team has possession"
+    ],
+    "answer": 1,
+    "explanation": "The 2026/27 off-field treatment protocol normally requires the player to leave, wait until play has restarted and one running minute has elapsed, and receive the referee’s signal to re-enter. Exceptions include certain serious injuries and injuries from an opponent’s cautionable or sending-off offence.",
+    "source": "https://www.theifab.com/laws/latest/off-field-treatment-and-assessment-protocol/"
+  },
+  {
+    "id": "dropped-ball-penalty-area",
+    "law": 8,
+    "topic": "Restarts",
+    "question": "Play is stopped while the ball is inside the penalty area and there is no other restart. To whom is the dropped ball given?",
+    "options": [
+      "The team that last touched it",
+      "The defending team’s goalkeeper",
+      "The attacking captain",
+      "Two players contest it"
+    ],
+    "answer": 1,
+    "explanation": "If play was stopped with the ball inside the penalty area, the dropped ball is for the defending team's goalkeeper in that penalty area. Only that player participates.",
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/"
+  },
+  {
+    "id": "ball-hits-referee-possession",
+    "law": 9,
+    "topic": "Ball in play",
+    "question": "The ball strikes the referee, stays on the field, and the team in possession changes because of that contact. What is the restart?",
+    "options": [
+      "Play on in every case",
+      "Dropped ball",
+      "Indirect free kick",
+      "Throw-in"
+    ],
+    "answer": 1,
+    "explanation": "Play is stopped for a dropped ball when a ball touching a match official remains on the field and changes possession, among other listed outcomes.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  }
+]

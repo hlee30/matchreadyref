@@ -10,3 +10,16 @@
 .quiz .answer-reveal summary{max-width:260px}
 .quiz .quiz-actions{margin-top:20px}
 .topic-grid:has(> :only-child){grid-template-columns:minmax(240px,420px);justify-content:center}
+.quiz-layout{grid-template-columns:315px minmax(0,1fr)}
+.quiz-list{min-width:0;display:grid;gap:18px;align-content:start}
+.quiz-count{margin:0 0 4px;color:var(--lime);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.quiz-question{background:var(--slate);border:1px solid #607a84;padding:clamp(24px,3vw,36px);min-width:0}
+.quiz-question[hidden]{display:none!important}
+.quiz-question h2{font-size:clamp(22px,2.4vw,31px);line-height:1.22;letter-spacing:-.035em;margin:18px 0 24px}
+.quiz-question .answer-reveal{margin:0}
+.quiz-question .answer-reveal summary{max-width:230px}
+.quiz-question .feedback{margin:18px 0 0}
+.quiz-question .feedback p{white-space:pre-line}
+.quiz-question .eyebrow{line-height:1.6}
+@media(max-width:900px){.quiz-layout{grid-template-columns:1fr}}
+@media(max-width:650px){.topic-grid:has(> :only-child){grid-template-columns:1fr}}

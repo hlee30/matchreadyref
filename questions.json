@@ -5,7 +5,11 @@
     "topic": "The Start and Restart of Play",
     "question": "The ball touches a match official (outside the penalty area), remains on the field of play and the team in possession of the ball changes. What is the referee’s decision?",
     "explanation": "The referee stops play and drops the ball for the team that would have retained or gained possession if the ball had not touched the match official. If the referee cannot determine this, the ball is dropped for one player of the team that last touched the ball. Play is restarted at the position where the ball made contact with the match official.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-02",
@@ -13,7 +17,11 @@
     "topic": "The Start and Restart of Play",
     "question": "After a goal kick has been taken by the goalkeeper, the ball touches the referee outside the penalty area, remains on the field of play and bounces back towards the goal. The goalkeeper handles the ball to prevent it from entering the goal. The referee stops play at this point. What is the correct decision?",
     "explanation": "The referee stops play and drops the ball for the goalkeeper’s team at the position where the ball made contact with the referee.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-03",
@@ -21,7 +29,11 @@
     "topic": "The Start and Restart of Play",
     "question": "A player of Team A plays the ball which then touches the referee (outside the penalty area), remains on the field of play and, as a result, Team A starts a promising attack. What is the referee’s decision?",
     "explanation": "The ball touched a match official and Team A started a promising attack. In this case, play is restarted with a dropped ball for one player of the team that would have retained or gained possession if the ball had not touched the referee. The ball is dropped at the position where the ball made contact with the referee.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-04",
@@ -37,7 +49,11 @@
     "topic": "The Start and Restart of Play",
     "question": "The ball is kicked by a Team A player and is going to a Team B player when it deflects off the referee to another Team A player rather than to the Team B player. The Team A player immediately creates a promising attack for their team. What is the correct decision?",
     "explanation": "Play is stopped and restarted with a dropped ball for one player of Team B, as it is clear to the referee that Team B would have gained possession if the ball had not deflected off the referee. The ball is dropped at the position where the ball made contact with the referee.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-06",
@@ -53,7 +69,11 @@
     "topic": "The Start and Restart of Play",
     "question": "After a goal kick has been taken by Team A, the ball touches the referee outside the penalty area, remains on the field of play and the opponents (Team B) gain possession of the ball. The referee stops play (as the team in possession changes) and restarts play with a dropped ball for the team that would have retained or gained possession had play not been stopped. Where should the referee drop the ball?",
     "explanation": "The ball is dropped at the position where the ball made contact with the referee.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-08",
@@ -61,7 +81,11 @@
     "topic": "The Start and Restart of Play",
     "question": "A player (Team A) plays the ball which then touches the referee (outside the penalty area), remains on the field of play and, as a result, Team A starts a promising attack. What is the referee’s decision?",
     "explanation": "The ball touched a match official and Team A started a promising attack. In this case, play is restarted with a dropped ball for one player of the team that would have retained or gained possession if the ball had not touched the referee. The ball is dropped at the position where the ball made contact with the referee.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-09",
@@ -69,7 +93,11 @@
     "topic": "The Start and Restart of Play",
     "question": "A player of Team A kicks the ball towards a team-mate. The ball moves quickly on the ground and is heading out for a throw-in when it deflects off an assistant referee who is standing on the touchline. As a result, the ball remains on the field of play and is then controlled by another Team A player who starts a promising attack. What is the correct decision?",
     "explanation": "The ball touched a match official and Team A started a promising attack. In this case, the referee restarts play with a dropped ball at the position where the ball touched the assistant referee. The ball is dropped for Team B as they would have gained possession if the ball had gone out of play for a throw-in.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
   },
   {
     "id": "law-8-faq-10",
@@ -397,6 +425,131 @@
     "topic": "The Start and Restart of Play",
     "question": "A player plays the ball which then touches the referee (inside the penalty area), remains on the field of play and goes directly into the goal. What is the referee’s decision?",
     "explanation": "The goal is disallowed and play restarts with a dropped ball for the defending team goalkeeper in their penalty area.",
-    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball"
+    "source": "https://www.theifab.com/laws/latest/the-start-and-restart-of-play/#dropped-ball",
+    "topics": [
+      "The Start and Restart of Play",
+      "Ball in Play"
+    ]
+  },
+  {
+    "id": "law-9-faq-01",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "An attacking player (Team A) takes a shot which clearly goes wide, missing the goal by several metres. As the ball is clearly going out of play for a goal kick, a substitute from Team B, warming up near the goal line, stops the ball with their foot on the goal line. What is the correct decision if no other player has the chance to touch the ball before it leaves the field of play?",
+    "explanation": "The substitute touched the ball while it was still in play but when it is clearly leaving the field of play, without any intention of unfairly interfering with play. In this case, the referee awards an indirect free kick to Team A at the position where the substitute touched the ball. There is no disciplinary sanction.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-02",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "A player from Team A kicks the ball which then touches an opponent (Team B) and is clearly going out of play for a throw-in. While the ball is still on the field of play, very close to the touchline, a coach from Team A stops it in an attempt to help their team quickly restart play. What is the correct decision?",
+    "explanation": "The coach made contact with the ball while it was still in play but when it was clearly leaving the field, without any intention of unfairly interfering with play. In this case, the referee awards an indirect free kick to Team B at the position where the coach touched the ball. There is no disciplinary sanction, unless the coach has persistently left the technical area, which would be cautioned (yellow card).",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-03",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "The ball is kicked by a Team A player and is going towards a Team B player when it deflects off the referee and leaves the field of play by the touchline without touching any other player. What is the correct decision?",
+    "explanation": "A throw-in is awarded to Team B, as the Team A player was the last to touch the ball before it went out of play. Play cannot be restarted with a dropped ball because the ball did not remain on the field of play after touching the referee.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-04",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "An attacker takes a shot and is then recklessly tackled by a defender inside the penalty area. Even though the ball is heading towards the goal, the referee blows the whistle immediately after a foul, before the ball enters the goal. What is the correct decision?",
+    "explanation": "The ball was heading towards the goal, so the referee should have applied advantage. However, as the whistle stopped play before the ball entered the goal, a goal cannot be awarded. In this situation, play is restarted with a penalty kick and the defender is cautioned (yellow card) for unsporting behaviour (reckless tackle).",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-05",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "An attacker commits a late sliding tackle, recklessly fouling a defender near the goal line. The tackle occurs shortly after the defender has kicked the ball and it has already gone out for a corner kick. What is the correct decision?",
+    "explanation": "The attacker is cautioned (yellow card) for the reckless tackle, even though it occurred after the ball was out of play. However, play is restarted with a corner kick because the referee cannot award a free kick as the ball was outside the field of play at the time of the reckless tackle.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-06",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "After a throw-in has been taken, the ball enters the penalty area, bounces off the ground, and a defender deliberately touches it with the arm. The referee notices a handball offence and immediately blows the whistle, even though the ball has gone to an attacker who takes a shot just after the whistle was blown. What is the decision if the ball enters the goal?",
+    "explanation": "The referee should wait a few seconds to allow a possible advantage to develop. However, as play has been stopped by the referee, the ball was out of play when the goal was scored so it cannot be awarded. In this case, play is restarted with a penalty kick for the handball offence and, depending on the exact situation, any appropriate disciplinary action.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-07",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "A defender commits a reckless tackle against an attacker after the ball has been touched by the attacker and gone out over the touchline. What is the correct decision?",
+    "explanation": "The offender is cautioned (yellow card) for the reckless challenge even though it occurred after the ball was out of play. However, play is restarted with a throw-in for the defending team because the referee cannot award a free kick as the ball was outside the field of play at the time of the challenge.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-08",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "An attacker gets the ball close to the goal line and runs into the opponents’ penalty area. A defender commits a sliding tackle that endangers the safety of the attacker. What is the decision if the tackle occurs after the ball has wholly passed over the goal line (outside the goal, without touching any defender)?",
+    "explanation": "The defender is sent off (red card) for serious foul play. A penalty kick cannot be awarded because the ball was out of play at the time of the tackle. Play is restarted with a goal kick.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-09",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "Is the ball in play if it rebounds off an assistant referee?",
+    "explanation": "The ball is out of play when it touches a match official, remains on the field of play and: a team starts a promising attack or the ball goes directly into the goal or the team in possession of the ball changes The ball is in play at all other times when it touches a match official and has not wholly passed over the goal line or touchline.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-10",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "A player kicks the ball that hits the referee and leaves the field by the goal line/by the touchline. How is play restarted?",
+    "explanation": "A goal kick/corner kick/throw-in is awarded to the opponents because play restarts as if the ball has not hit/touched the referee. A dropped ball is only when the ball touches a match official, remains on the field of play and a team starts a promising attack or the ball goes directly into the goal or the team in possession changes.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
+  },
+  {
+    "id": "law-9-faq-11",
+    "law": 9,
+    "topic": "Ball in Play",
+    "topics": [
+      "Ball in Play"
+    ],
+    "question": "A player of Team A takes the throw-in. After the ball is in play, it hits the referee and leaves the field of play by the touchline without touching any other player. How is play restarted?",
+    "explanation": "The referee awards a throw-in to the opponents (Team B) as Law 9 clearly states that it is a dropped ball only when the ball remains on the field of play.",
+    "source": "https://www.theifab.com/laws/latest/the-ball-in-and-out-of-play/"
   }
 ]

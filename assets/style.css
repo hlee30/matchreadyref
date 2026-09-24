@@ -23,3 +23,6 @@
 .quiz-question .eyebrow{line-height:1.6}
 @media(max-width:900px){.quiz-layout{grid-template-columns:1fr}}
 @media(max-width:650px){.topic-grid:has(> :only-child){grid-template-columns:1fr}}
+
+/* Keep lists and multi-part decisions legible in revealed answers. */
+.feedback p,.answer-box p{white-space:pre-line}

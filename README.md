@@ -17,6 +17,6 @@ To edit questions, update `questions.json` and run `python3 build.py` (or with y
 
 ## Editorial and identity
 
-This is an independent study site, **not** The IFAB or an official referee exam. Visuals borrow the charcoal, pale background, and electric yellow feel of the 2026/27 publication, with an original name, monogram, and field illustration. Do not add IFAB branding or republish its PDF on this site. The explanations paraphrase the official Laws and link back to The IFAB. Match regulations can modify the application of some protocols and options.
+This is an independent study site, **not** The IFAB or an official referee exam. Visuals borrow the navy, slate, and electric yellow feel of the 2026/27 publication, with an original name, monogram, and field illustration. Do not add IFAB branding or republish its PDF on this site. The explanations paraphrase the official Laws and link back to The IFAB. Match regulations can modify the application of some protocols and options.
 
 Version: 2026/27. Initial content reviewed against the user-provided IFAB 2026/27 PDF. Recheck when IFAB publishes corrections or the next edition.

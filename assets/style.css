@@ -26,3 +26,29 @@
 
 /* Keep lists and multi-part decisions legible in revealed answers. */
 .feedback p,.answer-box p{white-space:pre-line}
+
+/* Account access */
+.auth-layout{max-width:640px;padding-bottom:5rem}
+.auth-layout [hidden]{display:none!important}
+.auth-layout #auth-status:not(:empty){margin-bottom:1.25rem;padding:1rem 1.2rem;border:1px solid #b7c858;background:#20312d;color:#effa57;border-radius:8px}
+.auth-layout #auth-status.error{border-color:#e6a7a7;background:#42242a;color:#fff}
+.auth-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.auth-tab{font:inherit;color:#fff;background:transparent;border:1px solid #708085;border-radius:6px;padding:.7rem .95rem;cursor:pointer}
+.auth-tab[aria-pressed="true"]{background:#effa57;color:#071b25;border-color:#effa57;font-weight:800}
+.auth-tab:focus-visible,.auth-form input:focus-visible{outline:3px solid #effa57;outline-offset:2px}
+.auth-form{display:grid;gap:.8rem;padding:2rem;border:1px solid #52636a;border-radius:10px;background:#102b36}
+.auth-form label{font-weight:700}
+.auth-form input{width:100%;box-sizing:border-box;color:#fff;background:#071b25;border:1px solid #819096;border-radius:6px;padding:.85rem;font:inherit}
+.auth-form #password-field{display:grid;gap:.8rem}
+.auth-form .button{justify-self:start;margin-top:.7rem}
+#account-panel{padding:2rem;border:1px solid #52636a;border-radius:10px;background:#102b36}
+#account-email{overflow-wrap:anywhere}
+.decision-actions[hidden],#progress-upgrade[hidden],#review-completed[hidden]{display:none!important}
+.decision-actions{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;margin-top:1.15rem;border-top:1px solid #52636a;padding-top:1.15rem}
+.mark-complete{font:inherit;background:#effa57;color:#071b25;font-weight:800;border:0;border-radius:6px;padding:.7rem .9rem;cursor:pointer}
+.mark-complete:disabled{opacity:.6;cursor:wait}
+.mark-complete:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.save-status{color:#effa57}
+#progress-upgrade{border:1px solid #819096;padding:1rem;border-radius:6px;margin:1rem 0}
+#progress-upgrade .button{font-size:.9rem}
+.quiz-empty{padding:2rem;border:1px solid #52636a;border-radius:8px}

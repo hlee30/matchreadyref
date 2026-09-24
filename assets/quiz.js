@@ -5,6 +5,8 @@ const topic = document.querySelector('#topic');
 const list = document.querySelector('#quiz-list');
 const count = document.querySelector('#quiz-count');
 const progressStatus = document.querySelector('#progress-status');
+const progressViews = document.querySelector('#progress-views');
+const practiceLink = document.querySelector('#practice-remaining');
 const reviewLink = document.querySelector('#review-completed');
 const upgrade = document.querySelector('#progress-upgrade');
 const cards = [...list.querySelectorAll('.quiz-question')];
@@ -54,9 +56,15 @@ function display() {
 }
 function updateProgress() {
   progressStatus.textContent = `${completed.size} completed · ${cards.length - completed.size} left to practice. Unmarked questions will reappear in quizzes.`;
-  reviewLink.hidden = false;
-  reviewLink.textContent = review ? 'Back to practice questions →' : 'Review completed questions →';
-  reviewLink.href = review ? '/practice-tests.html' : '/practice-tests.html?completed=1';
+  progressViews.hidden = false;
+  const topicParam = topic.value === 'all' ? '' : `topic=${encodeURIComponent(slug(topic.value))}`;
+  practiceLink.href = `/practice-tests.html${topicParam ? `?${topicParam}` : ''}`;
+  reviewLink.href = `/practice-tests.html?completed=1${topicParam ? `&${topicParam}` : ''}`;
+  for (const [link, active] of [[practiceLink, !review], [reviewLink, review]]) {
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  }
+  reviewLink.textContent = `Completed questions (${completed.size})`;
 }
 for (const card of cards) {
   const details = card.querySelector('details');
@@ -101,6 +109,7 @@ topic.addEventListener('change', () => {
   if (topic.value === 'all') url.searchParams.delete('topic');
   else url.searchParams.set('topic', slug(topic.value));
   history.replaceState(null, '', url);
+  if (progressReady) updateProgress();
   display();
 });
 display();

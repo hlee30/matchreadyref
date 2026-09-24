@@ -52,3 +52,11 @@
 #progress-upgrade{border:1px solid #819096;padding:1rem;border-radius:6px;margin:1rem 0}
 #progress-upgrade .button{font-size:.9rem}
 .quiz-empty{padding:2rem;border:1px solid #52636a;border-radius:8px}
+
+/* Paid members can switch between remaining and completed questions. */
+#site-nav nav a[aria-label="Account, signed in"]{color:var(--lime)}
+.progress-views{display:grid;gap:.55rem;margin-top:1.25rem}
+.progress-views[hidden]{display:none!important}
+.progress-views a{display:block;text-decoration:none;border:1px solid var(--line);padding:.72rem .85rem;border-radius:6px;color:var(--white);font-weight:750}
+.progress-views a:hover{border-color:var(--lime);color:var(--lime)}
+.progress-views a[aria-current="page"]{border-color:var(--lime);background:var(--lime);color:var(--night)}

@@ -1,6 +1,6 @@
 # Match Ready Ref
 
-A ready-to-upload, static football referee quiz website based on the **2026/27 Laws of the Game**. Includes 20 original scenarios, a mixed/topic quiz, 20 crawlable answer pages, a question bank, About and editorial policy pages, and mobile layouts. No account, subscription, back end, analytics, advertising, or “Work With Me” page.
+A ready-to-upload, static football referee quiz website based on the **2026/27 Laws of the Game**. Includes 20 original scenarios, a mixed/topic quiz, 20 crawlable answer pages, a question bank, About and editorial policy pages, and mobile layouts. No account, subscription, back end, advertising, or “Work With Me” page. GA4 tracking can be activated with this site’s measurement ID.
 
 ## Publish
 
@@ -20,3 +20,11 @@ To edit questions, update `questions.json` and run `python3 build.py` (or with y
 This is an independent study site, **not** The IFAB or an official referee exam. Visuals borrow the navy, slate, and electric yellow feel of the 2026/27 publication, with an original name, monogram, and field illustration. Do not add IFAB branding or republish its PDF on this site. The explanations paraphrase the official Laws and link back to The IFAB. Match regulations can modify the application of some protocols and options.
 
 Version: 2026/27. Initial content reviewed against the user-provided IFAB 2026/27 PDF. Recheck when IFAB publishes corrections or the next edition.
+
+## Google Analytics 4
+
+Create a separate GA4 property for Match Ready Ref and a Web data stream with website URL `https://matchreadyref.com`. In Google Analytics, open Admin → Data streams → your Web stream and copy the Measurement ID beginning `G-`.
+
+The site is configured with the Match Ready Ref GA4 web stream ID `G-3RDDMX0KZW` in `assets/analytics.js`. Upload that file to the `assets` folder on the existing `main` branch to activate tracking. Do not add a second tag for the same stream.
+
+The Google tag runs on every generated HTML page and sends default `page_view` data. The quiz also sends `quiz_start`, `quiz_answer`, and `quiz_complete`. The events carry the selected topic; answer events include question ID, Law number, question number, and correctness; completion events include score and question count. No visitor-entered text is sent. Verify in GA4 Realtime or DebugView after publishing. If you already installed a tag for this same GA4 stream through Google Tag Manager or another snippet, use only one installation to avoid duplicate page views.

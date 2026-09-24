@@ -1,12 +1,13 @@
 # Match Ready Ref
 
-Static 2026/27 referee study site with a single **Quiz** page. Visitors choose Mixed or one of two topics, read a question, and select **See Decision** to reveal the answer. There are no multiple-choice options or self-reported scores.
+Static 2026/27 referee study site with a single **Quiz** page. Visitors choose Mixed or one of three topics, read a question, and select **See Decision** to reveal the answer. There are no multiple-choice options or self-reported scores.
 
 - **The Start and Restart of Play:** 50 questions.
 - **Ball in Play:** 19 questions, including eight that also belong in The Start and Restart of Play.
-- **Mixed:** ten random questions from the 61 question records, including both topics.
+- **The Outcome of a Match:** 28 Law 10 questions.
+- **Mixed:** ten random questions from all 89 question records.
 
-Each of the 61 question records has its own crawlable HTML answer page linked in `sitemap.xml`. The Quiz page also contains all questions and explanations in its HTML, so it remains readable without JavaScript. The topic filter and mixed selection run in the browser.
+Each of the 89 question records has its own crawlable HTML answer page linked in `sitemap.xml`. The Quiz page also contains all questions and explanations in its HTML, so it remains readable without JavaScript. The topic filter and mixed selection run in the browser.
 
 ## Upload to GitHub Pages
 
@@ -16,7 +17,7 @@ The included canonical URLs, `robots.txt`, and `sitemap.xml` use `https://matchr
 
 ## Edit questions
 
-`questions.json` is the source of truth. Some entries belong to both topics through their `topics` array and have one canonical answer page. To change questions, edit the JSON, then regenerate pages:
+`questions.json` is the source of truth. Some entries belong to two topics through their `topics` array and have one canonical answer page. To change questions, edit the JSON, then regenerate pages:
 
 ```sh
 python3 build.py --base-url https://matchreadyref.com
@@ -26,7 +27,7 @@ The builder removes old generated question pages whose IDs are absent from the J
 
 ## Sources
 
-The question-and-answer sets were supplied by the site owner from The IFAB's Law 8 and Law 9 FAQs. Each answer page links to an official source. Match Ready Ref is independent and not affiliated with or endorsed by The IFAB. Consult the official Laws and competition regulations for on-field decisions.
+The question-and-answer sets were supplied by the site owner from The IFAB's Law 8, Law 9 and Law 10 FAQs. Each answer page links to an official source. Match Ready Ref is independent and not affiliated with or endorsed by The IFAB. Consult the official Laws and competition regulations for on-field decisions.
 
 ## GA4
 

@@ -1,1 +1,119 @@
-(()=>{'use strict';const box=document.querySelector('#quiz'),topic=document.querySelector('#topic');if(!box||!topic)return;let bank=[],round=[],index=0,score=0,answered=false;const el=(tag,cls,txt)=>{let n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};const shuffle=a=>{let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b};const clear=()=>box.replaceChildren();const makeLink=(href,text)=>{let a=el('a','',text);a.href=href;return a};function start(){round=shuffle(bank.filter(q=>topic.value==='all'||q.topic===topic.value)).slice(0,topic.value==='all'?10:99);index=score=0;if(round.length)window.mrrTrack?.('quiz_start',{quiz_topic:topic.value,question_count:round.length});show()}function show(){clear();if(index>=round.length){window.mrrTrack?.('quiz_complete',{quiz_topic:topic.value,score:score,question_count:round.length});box.append(el('p','eyebrow','ROUND COMPLETE'),el('h2','',score+' out of '+round.length),el('p','score',score===round.length?'Excellent decisions. Ready for another round?':'Review the decisions and try another round.'));let actions=el('div','quiz-actions'),again=el('button','button primary','Try another round ↗');again.type='button';again.addEventListener('click',start);actions.append(again,makeLink('/question-bank.html','Browse all questions →'));box.append(actions);return}answered=false;let q=round[index],top=el('div','quiz-top');top.append(el('span','eyebrow','LAW '+q.law+' · '+q.topic),el('span','eyebrow',(index+1)+' / '+round.length));let progress=el('div','progress'),bar=el('span');bar.style.width=((index)/round.length*100)+'%';progress.append(bar);box.append(top,progress,el('h2','',q.question));let choices=el('div','choices'),buttons=[];q.options.forEach((option,i)=>{let button=el('button','choice');button.type='button';button.append(el('span','',String.fromCharCode(65+i)),document.createTextNode(option));button.addEventListener('click',()=>respond(i));buttons.push(button);choices.append(button)});box.append(choices);function respond(choice){if(answered)return;answered=true;if(choice===q.answer)score++;window.mrrTrack?.('quiz_answer',{quiz_topic:topic.value,question_id:q.id,law_number:q.law,is_correct:choice===q.answer?1:0,question_number:index+1});buttons.forEach((b,i)=>{b.disabled=true;if(i===q.answer)b.classList.add('right');else if(i===choice)b.classList.add('wrong')});let feedback=el('div','feedback'),strong=el('strong','',choice===q.answer?'Correct decision.':'The decision: '+q.options[q.answer]);feedback.append(strong,el('p','',q.explanation),makeLink('/questions/'+q.id+'.html','Read the full answer →'));let actions=el('div','quiz-actions'),next=el('button','button primary',index===round.length-1?'See your score ↗':'Next question →');next.type='button';next.addEventListener('click',()=>{index++;show();box.scrollIntoView({behavior:'smooth',block:'start'})});let source=makeLink(q.source,'Official Law '+q.law+' ↗');source.target='_blank';source.rel='noopener';actions.append(next,source);box.append(feedback,actions);next.focus()}}fetch('/questions.json').then(r=>{if(!r.ok)throw Error('Unable to load questions');return r.json()}).then(data=>{bank=data;topic.addEventListener('change',start);start()}).catch(()=>{clear();box.append(el('h2','','The quiz could not load.'),el('p','','Open this site through a local web server or its published URL. The question bank remains available.'),makeLink('/question-bank.html','Browse all questions →'))})})();
+(() => {
+  'use strict';
+  const box = document.querySelector('#quiz');
+  const topic = document.querySelector('#topic');
+  if (!box || !topic) return;
+
+  let bank = [];
+  let round = [];
+  let index = 0;
+  let reveals = 0;
+
+  function element(tag, className, value) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (value !== undefined) node.textContent = value;
+    return node;
+  }
+  function link(href, label) {
+    const node = element('a', '', label);
+    node.href = href;
+    return node;
+  }
+  function shuffled(list) {
+    const copy = [...list];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+  function start() {
+    const available = bank.filter(q => topic.value === 'all' || q.topic === topic.value);
+    round = shuffled(available).slice(0, topic.value === 'all' ? 10 : available.length);
+    index = 0;
+    reveals = 0;
+    window.mrrTrack?.('quiz_start', {quiz_topic: topic.value, question_count: round.length});
+    show();
+  }
+  function show() {
+    box.replaceChildren();
+    if (index >= round.length) {
+      window.mrrTrack?.('quiz_complete', {
+        quiz_topic: topic.value, question_count: round.length, answers_revealed: reveals
+      });
+      box.append(
+        element('p', 'eyebrow', 'ROUND COMPLETE'),
+        element('h2', '', `You reviewed ${round.length} questions.`),
+        element('p', 'score', `Answers revealed: ${reveals}`)
+      );
+      const actions = element('div', 'quiz-actions');
+      const again = element('button', 'button primary', 'Try another round ↗');
+      again.type = 'button';
+      again.addEventListener('click', start);
+      actions.append(again, link('/question-bank.html', 'Browse all questions →'));
+      box.append(actions);
+      return;
+    }
+    const q = round[index];
+    const heading = element('div', 'quiz-top');
+    heading.append(
+      element('span', 'eyebrow', `LAW ${q.law} · ${q.topic}`),
+      element('span', 'eyebrow', `${index + 1} / ${round.length}`)
+    );
+    const progress = element('div', 'progress');
+    const bar = element('span');
+    bar.style.width = (index / round.length * 100) + '%';
+    progress.append(bar);
+    box.append(heading, progress, element('h2', '', q.question));
+
+    const details = element('details', 'answer-reveal');
+    const summary = element('summary', 'button primary', 'Show answer ↓');
+    const answer = element('div', 'feedback');
+    answer.append(element('strong', '', 'The decision'), element('p', '', q.explanation));
+    const official = link(q.source, 'Read official Law 8 ↗');
+    official.target = '_blank';
+    official.rel = 'noopener';
+    answer.append(official);
+    details.append(summary, answer);
+    let counted = false;
+    details.addEventListener('toggle', () => {
+      if (details.open && !counted) {
+        counted = true;
+        reveals++;
+        window.mrrTrack?.('quiz_reveal_answer', {
+          quiz_topic: topic.value, question_id: q.id,
+          law_number: q.law, question_number: index + 1
+        });
+      }
+    });
+    const actions = element('div', 'quiz-actions');
+    const next = element('button', 'button outline',
+      index === round.length - 1 ? 'Finish round →' : 'Next question →');
+    next.type = 'button';
+    next.addEventListener('click', () => {
+      index++;
+      show();
+      box.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+    actions.append(next, link('/questions/' + q.id + '.html', 'Question page ↗'));
+    box.append(details, actions);
+  }
+  fetch('/questions.json')
+    .then(response => {
+      if (!response.ok) throw Error('Unable to load questions');
+      return response.json();
+    })
+    .then(data => {
+      bank = data;
+      topic.addEventListener('change', start);
+      start();
+    })
+    .catch(() => {
+      box.replaceChildren(
+        element('h2', '', 'The quiz could not load.'),
+        element('p', '', 'Open the published site or run a local web server.'),
+        link('/question-bank.html', 'Browse all questions →')
+      );
+    });
+})();

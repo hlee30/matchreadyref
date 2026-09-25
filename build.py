@@ -4,11 +4,12 @@ import argparse, html, json, pathlib, re, urllib.parse
 ROOT = pathlib.Path(__file__).resolve().parent
 Q = json.loads((ROOT / 'questions.json').read_text(encoding='utf-8'))
 TOPICS = ["The Start and Restart of Play", "Ball in Play", "The Outcome of a Match", "Offside", "Fouls and Misconduct"]
+ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3584267014164543" crossorigin="anonymous"></script>'
 
 def esc(value): return html.escape(str(value), quote=True)
 def canon(path, base): return f'<link rel="canonical" href="{esc(base + path)}">' if base else ''
 def head(title, description, path, base):
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071b25"><meta name="description" content="{esc(description)}"><meta name="robots" content="index,follow,max-snippet:-1"><title>{esc(title)} | Match Ready Ref</title>{canon(path, base)}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css?v=20260924-law12"></head>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071b25"><meta name="description" content="{esc(description)}"><meta name="robots" content="index,follow,max-snippet:-1"><title>{esc(title)} | Match Ready Ref</title>{canon(path, base)}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css?v=20260924-law12">{ADSENSE}</head>'''
 def shell(title, description, path, base, body, script=''):
     nav = '<nav aria-label="Main navigation"><a href="/">Home</a><a href="/practice-tests.html">Quiz</a><a href="/about.html">About</a><a href="/login.html">Log in</a></nav>'
     footer = '<footer><div class="wrap footgrid"><div><strong>MATCH READY REF<span class="lime">.</span></strong><p>Independent football referee study practice. Based on the 2026/27 Laws of the Game.</p></div><div><a href="/editorial-policy.html">Editorial policy</a><a href="/about.html">About</a><a href="https://www.theifab.com/laws-of-the-game-documents/?language=all&amp;year=2026%2F27" rel="noopener">Official IFAB Laws ↗</a></div></div><div class="wrap small">Not affiliated with or endorsed by The IFAB. The official Laws and your competition rules take precedence.</div></footer>'
@@ -76,6 +77,7 @@ def build(base):
         paths=['/','/practice-tests.html','/about.html','/editorial-policy.html']+[f'/questions/{q["id"]}.html' for q in Q]
         sitemap.write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{esc(base+p)}</loc></url>\n' for p in paths)+'</urlset>\n',encoding='utf-8')
     elif sitemap.exists(): sitemap.unlink()
+    (ROOT/'ads.txt').write_text('google.com, pub-3584267014164543, DIRECT, f08c47fec0942fa0\n',encoding='utf-8')
     print(f'Built {len(Q)} answer pages. '+('Sitemap and canonical URLs generated.' if base else 'Set --base-url after choosing the final domain to generate sitemap and canonicals.'))
 
 if __name__=='__main__':

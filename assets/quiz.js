@@ -46,7 +46,7 @@ function display() {
     if (mode !== 'remaining' && !progressReady) return false;
     if (!progressReady) return true;
     const id = card.id.slice(5);
-    return mode === 'saved' ? saved.has(id) : mode === 'completed' ? completed.has(id) : !completed.has(id);
+    return mode === 'saved' ? saved.has(id) : mode === 'completed' ? completed.has(id) : !completed.has(id) && !saved.has(id);
   });
   shown = topic.value === 'all' && mode === 'remaining' ? shuffle(matching).slice(0, 10) : matching;
   for (const card of shown) card.hidden = false;
@@ -58,13 +58,14 @@ function display() {
     ? 'Sign in and unlock saved progress to view your questions.'
     : mode === 'saved' ? 'No saved questions for this topic yet. Save one from the quiz to find it here.'
     : mode === 'completed' ? 'No completed questions for this topic yet. Return to the quiz to practice.'
-    : user ? 'You completed all questions in this topic. Review completed questions or choose another topic.'
+    : user ? 'No remaining questions in this topic. Review saved or completed questions, or choose another topic.'
       : 'No questions available for this topic.';
   empty.hidden = shown.length > 0;
   if (mode === 'remaining') window.mrrTrack?.('quiz_start', { quiz_topic: topic.value, question_count: shown.length });
 }
 function updateProgress() {
-  progressStatus.textContent = `${completed.size} completed · ${saved.size} saved for later · ${cards.length - completed.size} left to practice. Uncompleted questions remain in quizzes.`;
+  const remaining = cards.filter(card => !completed.has(card.id.slice(5)) && !saved.has(card.id.slice(5))).length;
+  progressStatus.textContent = `${completed.size} completed · ${saved.size} saved for later · ${remaining} remaining. Saved questions are kept out of the regular quiz until you remove them from Saved for later.`;
   progressViews.hidden = false;
   const topicParam = topic.value === 'all' ? '' : `topic=${encodeURIComponent(slug(topic.value))}`;
   practiceLink.href = `/practice-tests.html${topicParam ? `?${topicParam}` : ''}`;
@@ -138,7 +139,7 @@ for (const card of cards) {
       savedMessage.textContent = wasSaved ? 'Removed from saved.' : 'Saved for later.';
       updateProgress();
       window.mrrTrack?.(wasSaved ? 'quiz_unsave_question' : 'quiz_save_for_later', { question_id: id });
-      if (mode === 'saved' && wasSaved) display();
+      if ((mode === 'saved' && wasSaved) || (mode === 'remaining' && !wasSaved)) display();
     } catch (error) {
       savedMessage.textContent = `Could not save: ${error.message || 'please try again'}`;
     } finally {

@@ -60,3 +60,16 @@
 .progress-views a{display:block;text-decoration:none;border:1px solid var(--line);padding:.72rem .85rem;border-radius:6px;color:var(--white);font-weight:750}
 .progress-views a:hover{border-color:var(--lime);color:var(--lime)}
 .progress-views a[aria-current="page"]{border-color:var(--lime);background:var(--lime);color:var(--night)}
+
+/* The extended explanation follows the decision and completion control. */
+.decision-explanation{text-align:left;margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid #60747a;color:var(--muted)}
+.decision-explanation h3{font-size:1.45rem;line-height:1.2;color:var(--white);margin:0 0 1rem}
+.decision-explanation p{white-space:normal!important;line-height:1.7;margin:0 0 1rem}
+.decision-explanation strong{font-size:inherit;color:var(--white)}
+.decision-explanation blockquote{margin:1rem 0 1.3rem;padding:.8rem 1rem;border-left:3px solid var(--lime);background:#102b36;color:var(--white)}
+.decision-table-scroll{max-width:100%;overflow-x:auto;margin:1.2rem 0}
+.decision-explanation table{width:100%;border-collapse:collapse;min-width:980px;font-size:.72rem;line-height:1.3}
+.decision-explanation caption{text-align:left;color:var(--white);font-weight:800;padding-bottom:.65rem}
+.decision-explanation th,.decision-explanation td{border:1px solid #60747a;padding:.55rem .5rem;text-align:center;vertical-align:middle;white-space:nowrap}
+.decision-explanation th{color:var(--night);background:var(--lime)}
+.decision-explanation tbody tr:nth-child(even){background:#163740}

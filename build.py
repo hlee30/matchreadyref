@@ -5,6 +5,24 @@ ROOT = pathlib.Path(__file__).resolve().parent
 Q = json.loads((ROOT / 'questions.json').read_text(encoding='utf-8'))
 TOPICS = ["The Start and Restart of Play", "Ball in Play", "The Outcome of a Match", "Offside", "Fouls and Misconduct"]
 ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3584267014164543" crossorigin="anonymous"></script>'
+EXPLANATION_ID = 'law-8-faq-32'
+EXPLANATION_HTML = '''<section class="decision-explanation" aria-label="Explanation">
+<h3>Explanation</h3>
+<p>The distinction is <strong>who committed the offence and who the offence was committed against</strong>.</p>
+<blockquote><strong>The coach strikes their own player</strong>, who is temporarily off the field.</blockquote>
+<p>The coach commits <strong>violent conduct and is sent off</strong>. The disciplinary sanction and the restart are separate decisions.</p>
+<p>Law 12 prescribes a direct free kick or penalty kick for certain physical offences by team officials against an opponent or match official. Here, the coach struck a member of their own team outside the field of play. The Laws do not prescribe a free-kick restart for this combination. If the referee stops play, Law 8 therefore provides the restart: <strong>a dropped ball</strong>.</p>
+<div class="decision-table-scroll"><table><caption>Compare the decisions when the ball is in play</caption><thead><tr><th scope="col">Situation</th><th scope="col">Discipline</th><th scope="col">Restart</th></tr></thead><tbody>
+<tr><td>Coach strikes their own player off the field</td><td>Coach sent off</td><td>Dropped ball</td></tr>
+<tr><td>Coach strikes an opponent off the field</td><td>Coach sent off</td><td>Direct free kick on the nearest boundary line; penalty kick if applicable</td></tr>
+<tr><td>Coach enters the field and strikes an opponent</td><td>Coach sent off</td><td>Direct free kick or penalty kick where the offence occurs</td></tr>
+<tr><td>Spectator interferes with play</td><td>Spectator removed</td><td>Dropped ball</td></tr>
+</tbody></table></div>
+<p>If the ball was <strong>already out of play</strong> when the coach struck the player, the misconduct does not change the restart. The coach is sent off and play resumes with the restart already due.</p>
+</section>'''
+
+def extra_explanation(q):
+    return EXPLANATION_HTML if q['id'] == EXPLANATION_ID else ''
 
 def esc(value): return html.escape(str(value), quote=True)
 def canon(path, base): return f'<link rel="canonical" href="{esc(base + path)}">' if base else ''
@@ -32,7 +50,7 @@ def build(base):
         f'<details class="answer-reveal"><summary class="button primary">See Decision <span aria-hidden="true">↓</span></summary>'
         f'<div class="feedback"><strong>The decision</strong><p>{esc(q["explanation"])}</p>'
         f'<a href="{esc(q["source"])}" target="_blank" rel="noopener">Read official Law {q["law"]} ↗</a>'
-        f'<div class="decision-actions" hidden><button type="button" class="mark-complete">Mark completed ✓</button><span class="save-status" role="status" aria-live="polite"></span></div></div></details></article>'
+        f'<div class="decision-actions" hidden><button type="button" class="mark-complete">Mark completed ✓</button><span class="save-status" role="status" aria-live="polite"></span></div>{extra_explanation(q)}</div></details></article>'
         for q in Q
     )
     practice = (
@@ -63,7 +81,7 @@ def build(base):
     for q in Q:
         path=f'/questions/{q["id"]}.html'
         jsonld=json.dumps({"@context":"https://schema.org","@type":"Question","name":q['question'],"acceptedAnswer":{"@type":"Answer","text":q['explanation']},"about":{"@type":"CreativeWork","name":f"Law {q['law']} · 2026/27 Laws of the Game","url":q['source']}},ensure_ascii=False).replace('</','<\\/')
-        body=f'<section class="pagehero wrap narrow"><p class="eyebrow">LAW {q["law"]} · {esc(q["topic"])} · 2026/27</p><h1 class="question-title">{esc(q["question"])}</h1></section><div class="wrap narrow answer-layout"><details class="answer-reveal"><summary class="button primary">See Decision <span aria-hidden="true">↓</span></summary><article class="answer-box"><p class="eyebrow">THE DECISION</p><p>{esc(q["explanation"])}</p><a class="text-link" href="{esc(q["source"])}" rel="noopener" target="_blank">Read official Law {q["law"]} ↗</a></article></details><div class="next-actions"><a class="button primary" href="/practice-tests.html">Take a practice test ↗</a><a class="text-link" href="/practice-tests.html">← Quiz</a></div></div><script type="application/ld+json">{jsonld}</script>'
+        body=f'<section class="pagehero wrap narrow"><p class="eyebrow">LAW {q["law"]} · {esc(q["topic"])} · 2026/27</p><h1 class="question-title">{esc(q["question"])}</h1></section><div class="wrap narrow answer-layout"><details class="answer-reveal"><summary class="button primary">See Decision <span aria-hidden="true">↓</span></summary><article class="answer-box"><p class="eyebrow">THE DECISION</p><p>{esc(q["explanation"])}</p><a class="text-link" href="{esc(q["source"])}" rel="noopener" target="_blank">Read official Law {q["law"]} ↗</a>{extra_explanation(q)}</article></details><div class="next-actions"><a class="button primary" href="/practice-tests.html">Take a practice test ↗</a><a class="text-link" href="/practice-tests.html">← Quiz</a></div></div><script type="application/ld+json">{jsonld}</script>'
         (ROOT/path.lstrip('/')).write_text(shell(q['question'],q['explanation'],path,base,body),encoding='utf-8')
     about='''<section class="pagehero wrap narrow"><p class="eyebrow">ABOUT THIS PROJECT</p><h1>Study the moment.<br><span class="lime">Understand the Law.</span></h1><p>Match Ready Ref is an independent practice site for football referees and learners. It presents Law 8, Law 9, Law 10, Law 11 and Law 12 match situations as questions with revealable answers and direct links to the official 2026/27 Laws of the Game.</p></section><section class="wrap narrow prose"><h2>How to use it</h2><p>Take a mixed practice round, reveal each answer, then follow the official source for decisions you want to review. The quiz questions and individual answer pages are readable without JavaScript, including by search crawlers and assistive technology.</p><h2>Scope</h2><p>The scenarios assume the 2026/27 Laws of the Game and ordinary 11-a-side play unless a question says otherwise. Some protocols, competition options, and local rules vary. Check the competition regulations before applying a decision in a match.</p><p>This site is not affiliated with, approved by, or endorsed by The International Football Association Board (The IFAB).</p><p><a class="text-link" href="https://www.theifab.com/laws-of-the-game-documents/?language=all&amp;year=2026%2F27" rel="noopener">Open the official 2026/27 Laws ↗</a></p></section>'''
     (ROOT/'about.html').write_text(shell('About','How Match Ready Ref creates independent 2026/27 referee law practice questions and links to the official IFAB Laws.','/about.html',base,about),encoding='utf-8')

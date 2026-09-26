@@ -7,6 +7,7 @@ const count = document.querySelector('#quiz-count');
 const progressStatus = document.querySelector('#progress-status');
 const progressViews = document.querySelector('#progress-views');
 const practiceLink = document.querySelector('#practice-remaining');
+const savedLink = document.querySelector('#review-saved');
 const reviewLink = document.querySelector('#review-completed');
 const upgrade = document.querySelector('#progress-upgrade');
 const cards = [...list.querySelectorAll('.quiz-question')];
@@ -15,10 +16,11 @@ const slug = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^
 const params = new URLSearchParams(location.search);
 const selected = [...topic.options].find(option => slug(option.value) === params.get('topic'));
 if (selected) topic.value = selected.value;
-const review = params.get('completed') === '1';
+const mode = params.get('completed') === '1' ? 'completed' : params.get('saved') === '1' ? 'saved' : 'remaining';
 let shown = [];
 let revealed = new Set();
 let completed = new Set();
+let saved = new Set();
 let user = null;
 let client = null;
 let progressReady = false;
@@ -39,38 +41,57 @@ function display() {
     card.querySelector('details').open = false;
   }
   revealed = new Set();
-  const matching = cards.filter(card => (!review || progressReady) && (topic.value === 'all' || membership(card).includes(topic.value)) &&
-    (!progressReady || !user || (review ? completed.has(card.id.slice(5)) : !completed.has(card.id.slice(5)))));
-  shown = topic.value === 'all' && !review ? shuffle(matching).slice(0, 10) : matching;
+  const matching = cards.filter(card => {
+    if (topic.value !== 'all' && !membership(card).includes(topic.value)) return false;
+    if (mode !== 'remaining' && !progressReady) return false;
+    if (!progressReady) return true;
+    const id = card.id.slice(5);
+    return mode === 'saved' ? saved.has(id) : mode === 'completed' ? completed.has(id) : !completed.has(id);
+  });
+  shown = topic.value === 'all' && mode === 'remaining' ? shuffle(matching).slice(0, 10) : matching;
   for (const card of shown) card.hidden = false;
-  count.textContent = review && user ? `Completed questions · ${shown.length} shown`
+  count.textContent = mode === 'saved' ? `Saved for later · ${shown.length} questions`
+    : mode === 'completed' ? `Completed questions · ${shown.length} shown`
     : topic.value === 'all' ? `Mixed quiz · ${shown.length} questions across all topics`
       : `${topic.value} · ${shown.length} questions`;
-  empty.textContent = shown.length ? '' : review && !progressReady
-    ? 'Sign in and unlock saved progress to review completed questions.' : review && user
-    ? 'No completed questions for this topic yet. Return to the quiz to practice.'
+  empty.textContent = shown.length ? '' : mode !== 'remaining' && !progressReady
+    ? 'Sign in and unlock saved progress to view your questions.'
+    : mode === 'saved' ? 'No saved questions for this topic yet. Save one from the quiz to find it here.'
+    : mode === 'completed' ? 'No completed questions for this topic yet. Return to the quiz to practice.'
     : user ? 'You completed all questions in this topic. Review completed questions or choose another topic.'
       : 'No questions available for this topic.';
   empty.hidden = shown.length > 0;
-  if (!review) window.mrrTrack?.('quiz_start', { quiz_topic: topic.value, question_count: shown.length });
+  if (mode === 'remaining') window.mrrTrack?.('quiz_start', { quiz_topic: topic.value, question_count: shown.length });
 }
 function updateProgress() {
-  progressStatus.textContent = `${completed.size} completed · ${cards.length - completed.size} left to practice. Unmarked questions will reappear in quizzes.`;
+  progressStatus.textContent = `${completed.size} completed · ${saved.size} saved for later · ${cards.length - completed.size} left to practice. Uncompleted questions remain in quizzes.`;
   progressViews.hidden = false;
   const topicParam = topic.value === 'all' ? '' : `topic=${encodeURIComponent(slug(topic.value))}`;
   practiceLink.href = `/practice-tests.html${topicParam ? `?${topicParam}` : ''}`;
+  savedLink.href = `/practice-tests.html?saved=1${topicParam ? `&${topicParam}` : ''}`;
   reviewLink.href = `/practice-tests.html?completed=1${topicParam ? `&${topicParam}` : ''}`;
-  for (const [link, active] of [[practiceLink, !review], [reviewLink, review]]) {
+  for (const [link, active] of [[practiceLink, mode === 'remaining'], [savedLink, mode === 'saved'], [reviewLink, mode === 'completed']]) {
     if (active) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
+  savedLink.textContent = `Saved for later (${saved.size})`;
   reviewLink.textContent = `Completed questions (${completed.size})`;
+  for (const card of cards) {
+    const id = card.id.slice(5);
+    card.querySelector('.mark-complete').textContent = completed.has(id) ? 'Practice again ↩' : 'Mark completed ✓';
+    const saveButton = card.querySelector('.save-for-later');
+    saveButton.textContent = saved.has(id) ? 'Remove from saved ★' : 'Save for later ☆';
+    saveButton.setAttribute('aria-pressed', String(saved.has(id)));
+  }
 }
 for (const card of cards) {
   const details = card.querySelector('details');
   const actions = card.querySelector('.decision-actions');
+  const savedActions = card.querySelector('.saved-actions');
   const button = card.querySelector('.mark-complete');
+  const saveButton = card.querySelector('.save-for-later');
   const message = card.querySelector('.save-status');
+  const savedMessage = card.querySelector('.saved-status');
   details.addEventListener('toggle', () => {
     if (!details.open || card.hidden || revealed.has(card.id)) return;
     revealed.add(card.id);
@@ -82,7 +103,7 @@ for (const card of cards) {
     });
   });
   button.addEventListener('click', async () => {
-    if (!client || !user) return;
+    if (!progressReady || !client || !user) return;
     const id = card.id.slice(5);
     const wasCompleted = completed.has(id);
     button.disabled = true;
@@ -102,7 +123,30 @@ for (const card of cards) {
       button.disabled = false;
     }
   });
+  saveButton.addEventListener('click', async () => {
+    if (!progressReady || !client || !user) return;
+    const id = card.id.slice(5);
+    const wasSaved = saved.has(id);
+    saveButton.disabled = true;
+    savedMessage.textContent = 'Saving…';
+    try {
+      const { error } = wasSaved
+        ? await client.from('saved_questions').delete().eq('user_id', user.id).eq('question_id', id)
+        : await client.from('saved_questions').insert({ user_id: user.id, question_id: id });
+      if (error) throw error;
+      if (wasSaved) saved.delete(id); else saved.add(id);
+      savedMessage.textContent = wasSaved ? 'Removed from saved.' : 'Saved for later.';
+      updateProgress();
+      window.mrrTrack?.(wasSaved ? 'quiz_unsave_question' : 'quiz_save_for_later', { question_id: id });
+      if (mode === 'saved' && wasSaved) display();
+    } catch (error) {
+      savedMessage.textContent = `Could not save: ${error.message || 'please try again'}`;
+    } finally {
+      saveButton.disabled = false;
+    }
+  });
   actions.hidden = true;
+  savedActions.hidden = true;
 }
 topic.addEventListener('change', () => {
   const url = new URL(location.href);
@@ -128,13 +172,18 @@ if (authConfigured) {
           startProgressCheckout(client, event.currentTarget, message => { progressStatus.textContent = message; }));
         display();
       } else {
-      const { data, error } = await client.from('question_progress').select('question_id').eq('user_id', user.id).eq('completed', true);
-      if (error) throw error;
-      completed = new Set(data.map(row => row.question_id));
+      const [completedResult, savedResult] = await Promise.all([
+        client.from('question_progress').select('question_id').eq('user_id', user.id).eq('completed', true),
+        client.from('saved_questions').select('question_id').eq('user_id', user.id)
+      ]);
+      if (completedResult.error) throw completedResult.error;
+      if (savedResult.error) throw savedResult.error;
+      completed = new Set(completedResult.data.map(row => row.question_id));
+      saved = new Set(savedResult.data.map(row => row.question_id));
       progressReady = true;
       for (const card of cards) {
         card.querySelector('.decision-actions').hidden = false;
-        card.querySelector('.mark-complete').textContent = review ? 'Practice again ↩' : 'Mark completed ✓';
+        card.querySelector('.saved-actions').hidden = false;
       }
       updateProgress();
       display();
@@ -144,7 +193,8 @@ if (authConfigured) {
       display();
     }
   } catch (error) {
-    progressStatus.textContent = 'Saved progress is temporarily unavailable. You can still practice without signing in.';
+    progressStatus.textContent = 'Saved questions and progress are temporarily unavailable. You can still practice without signing in.';
+    display();
   }
 } else {
   progressStatus.textContent = 'Account progress is being set up. You can still use the Quiz.';

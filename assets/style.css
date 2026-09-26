@@ -73,3 +73,12 @@
 .decision-explanation th,.decision-explanation td{border:1px solid #60747a;padding:.55rem .5rem;text-align:center;vertical-align:middle;white-space:nowrap}
 .decision-explanation th{color:var(--night);background:var(--lime)}
 .decision-explanation tbody tr:nth-child(even){background:#163740}
+
+/* A question can be saved before its decision is revealed. */
+.saved-actions[hidden]{display:none!important}
+.saved-actions{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin:.3rem 0 1.2rem}
+.save-for-later{font:inherit;font-weight:800;color:var(--lime);background:transparent;border:1px solid var(--lime);border-radius:6px;padding:.55rem .8rem;cursor:pointer}
+.save-for-later:hover,.save-for-later[aria-pressed="true"]{color:var(--night);background:var(--lime)}
+.save-for-later:disabled{opacity:.6;cursor:wait}
+.save-for-later:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+.saved-status{font-size:.9rem;color:var(--lime)}

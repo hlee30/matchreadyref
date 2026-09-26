@@ -72,7 +72,7 @@ def build(base):
         '<div class="quiz-list" id="quiz-list" aria-live="polite"><p class="quiz-count" id="quiz-count">All questions</p>'
         + question_cards + '</div></section>'
     )
-    (ROOT/'practice-tests.html').write_text(shell('Free football referee quiz','Study 2026/27 Law 8, Law 9, Law 10, Law 11 and Law 12 match scenarios by topic or mixed quiz. Reveal each decision and check the official IFAB Laws.','/practice-tests.html',base,practice,'<script type="module" src="/assets/quiz.js?v=20260925-saved-questions"></script>'),encoding='utf-8')
+    (ROOT/'practice-tests.html').write_text(shell('Free football referee quiz','Study 2026/27 Law 8, Law 9, Law 10, Law 11 and Law 12 match scenarios by topic or mixed quiz. Reveal each decision and check the official IFAB Laws.','/practice-tests.html',base,practice,'<script type="module" src="/assets/quiz.js?v=20260925-saved-filter"></script>'),encoding='utf-8')
     old_bank = ROOT/'question-bank.html'
     if old_bank.exists(): old_bank.unlink()
     question_dir = ROOT/'questions'

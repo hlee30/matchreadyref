@@ -5,8 +5,8 @@ ROOT = pathlib.Path(__file__).resolve().parent
 Q = json.loads((ROOT / 'questions.json').read_text(encoding='utf-8'))
 TOPICS = ["The Start and Restart of Play", "Ball in Play", "The Outcome of a Match", "Offside", "Fouls and Misconduct"]
 ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3584267014164543" crossorigin="anonymous"></script>'
-EXPLANATION_ID = 'law-8-faq-32'
-EXPLANATION_HTML = '''<section class="decision-explanation" aria-label="Explanation">
+EXPLANATIONS = {
+'law-8-faq-32': '''<section class="decision-explanation" aria-label="Explanation">
 <h3>Explanation</h3>
 <p>The distinction is <strong>who committed the offence and who the offence was committed against</strong>.</p>
 <blockquote><strong>The coach strikes their own player</strong>, who is temporarily off the field.</blockquote>
@@ -19,10 +19,17 @@ EXPLANATION_HTML = '''<section class="decision-explanation" aria-label="Explanat
 <tr><td>Spectator interferes with play</td><td>Spectator removed</td><td>Dropped ball</td></tr>
 </tbody></table></div>
 <p>If the ball was <strong>already out of play</strong> when the coach struck the player, the misconduct does not change the restart. The coach is sent off and play resumes with the restart already due.</p>
-</section>'''
+</section>''',
+'law-8-faq-35': '''<section class="decision-explanation" aria-label="Explanation">
+<h3>Explanation</h3>
+<p>A dropped ball is <strong>in play when it touches the ground</strong>. However, Law 8 has a specific instruction for what happens next: if it leaves the field of play <strong>without touching any player</strong>, the referee drops it again.</p>
+<p>That is why Team B does not receive a throw-in here. The ball reached the touchline after touching the ground, but no player touched it. The original drop is repeated for a Team A player.</p>
+<p>If a player had touched the ball after the drop and it then crossed the touchline, the normal throw-in decision would apply according to which team touched it last.</p>
+</section>''',
+}
 
 def extra_explanation(q):
-    return EXPLANATION_HTML if q['id'] == EXPLANATION_ID else ''
+    return EXPLANATIONS.get(q['id'], '')
 
 def esc(value): return html.escape(str(value), quote=True)
 def canon(path, base): return f'<link rel="canonical" href="{esc(base + path)}">' if base else ''

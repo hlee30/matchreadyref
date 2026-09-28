@@ -26,6 +26,12 @@ EXPLANATIONS = {
 <p>That is why Team B does not receive a throw-in here. The ball reached the touchline after touching the ground, but no player touched it. The original drop is repeated for a Team A player.</p>
 <p>If a player had touched the ball after the drop and it then crossed the touchline, the normal throw-in decision would apply according to which team touched it last.</p>
 </section>''',
+'law-10-faq-23': '''<section class="decision-explanation" aria-label="Explanation">
+<h3>Explanation</h3>
+<p><strong>Having used all substitutes does not make the injured player ineligible.</strong> The key question is whether the player was temporarily off the field for treatment when the match ended. Law 10 includes that player among those eligible for the shoot-out. If they recover, they may take a kick.</p>
+<p>If the player <strong>cannot continue</strong>, an outfield player cannot be replaced after the match, even if the team had unused substitutes. The player may be excluded before the kicks or leave during them. If that leaves their team with fewer eligible players, the opposing team reduces its number to match and tells the referee which player is excluded.</p>
+<p>The goalkeeper has a separate exception. An unable-to-continue goalkeeper may be replaced by a named substitute <strong>only if the team has not used its maximum permitted substitutions</strong>, or by a player previously excluded to equalise numbers. An eligible team-mate may also change places with the goalkeeper. If the original goalkeeper can still participate as an outfield player, the number of eligible players has not changed, so the opponents do not reduce their numbers.</p>
+</section>''',
 }
 
 def extra_explanation(q):

@@ -82,3 +82,7 @@
 .save-for-later:disabled{opacity:.6;cursor:wait}
 .save-for-later:focus-visible{outline:3px solid var(--white);outline-offset:2px}
 .saved-status{font-size:.9rem;color:var(--lime)}
+
+/* Articles navigation and reading layout */
+.articles-menu{position:relative}.articles-menu summary{cursor:pointer;list-style:none;text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:.1em}.articles-menu summary::-webkit-details-marker{display:none}.articles-menu summary::after{content:" ▾";color:var(--lime)}.articles-menu summary:focus-visible{outline:3px solid var(--lime);outline-offset:4px}.articles-dropdown{position:absolute;top:calc(100% + 14px);left:0;width:270px;background:var(--night-2);border:1px solid var(--line);padding:10px;box-shadow:0 12px 24px #0006;z-index:10}.articles-dropdown a{display:block;padding:12px;line-height:1.5}.article-body{padding-bottom:70px;font-size:18px;line-height:1.8}.article-body h2{font-size:clamp(23px,3vw,30px);line-height:1.25;margin:38px 0 12px}.article-body h2:first-child{margin-top:0}.article-body p{color:var(--muted);margin:0 0 18px}.article-body li{color:var(--muted);margin-bottom:6px}.article-body .next-actions{margin-top:40px}.article-body .qcard p{font-size:17px;text-transform:none;letter-spacing:0;font-weight:400}
+@media(max-width:760px){.articles-dropdown{position:static;width:100%;margin-top:12px;box-shadow:none}.article-body{font-size:17px}.articles-menu{width:100%}}

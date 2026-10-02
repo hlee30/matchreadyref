@@ -1,9 +1,6 @@
-This ZIP contains the complete Match Ready Ref site source, including Save for later, the Law 8 explanation, AdSense, and account progress. Upload files to matching paths in your existing website repository. Keep assets/ and supabase/ as folders; do not flatten them.
+Upload all files in this package to the matching paths in your GitHub repository.
 
-IMPORTANT: Keep your existing assets/auth-config.js. This ZIP intentionally excludes it so your live Supabase configuration is not overwritten. Keep all Supabase and Stripe secrets in their existing private settings; never put secret keys in the website repository.
+New: articles.html and articles/becoming-a-better-referee.html
+Updated: index.html, practice-tests.html, about.html, editorial-policy.html, login.html, all 430 questions/*.html (Articles navigation), assets/style.css, build.py, sitemap.xml.
 
-Before testing the new feature, open your existing Supabase project → SQL Editor and run the contents of supabase/save-for-later.sql once. This creates a separate saved_questions table with paid-account access controls. Do not rerun the original supabase/schema.sql on an existing database.
-
-The Save for later button appears on each Quiz question for signed-in paid accounts. The Saved for later view includes every saved question, even if it was also marked completed. Saving does not remove a question from the regular quiz; only marking completed does. The account page links to all three views.
-
-The Law 8 explanation appears beneath the Mark completed control after See Decision is opened. It also appears on questions/law-8-faq-32.html. After uploading, refresh the site. build.py is included so rebuilding preserves the feature.
+Keep folder structure. Do not upload the ZIP itself. No Supabase or Stripe configuration changes are needed.

@@ -79,7 +79,7 @@ function updateProgress() {
   reviewLink.textContent = `Completed questions (${completed.size})`;
   for (const card of cards) {
     const id = card.id.slice(5);
-    card.querySelector('.mark-complete').textContent = completed.has(id) ? 'Practice again ↩' : 'Mark completed ✓';
+    card.querySelector('.mark-complete').textContent = mode !== 'saved' && completed.has(id) ? 'Practice again ↩' : 'Mark as complete ✓';
     const saveButton = card.querySelector('.save-for-later');
     saveButton.textContent = saved.has(id) ? 'Remove from saved ★' : 'Save for later ☆';
     saveButton.setAttribute('aria-pressed', String(saved.has(id)));
@@ -93,6 +93,7 @@ for (const card of cards) {
   const saveButton = card.querySelector('.save-for-later');
   const message = card.querySelector('.save-status');
   const savedMessage = card.querySelector('.saved-status');
+  if (mode === 'saved') savedActions.append(button, message);
   details.addEventListener('toggle', () => {
     if (!details.open || card.hidden || revealed.has(card.id)) return;
     revealed.add(card.id);
@@ -106,8 +107,9 @@ for (const card of cards) {
   button.addEventListener('click', async () => {
     if (!progressReady || !client || !user) return;
     const id = card.id.slice(5);
-    const wasCompleted = completed.has(id);
+    const wasCompleted = mode !== 'saved' && completed.has(id);
     button.disabled = true;
+    saveButton.disabled = true;
     message.textContent = 'Saving…';
     try {
       const { error } = wasCompleted
@@ -115,6 +117,15 @@ for (const card of cards) {
         : await client.from('question_progress').upsert({ user_id: user.id, question_id: id, completed: true }, { onConflict: 'user_id,question_id' });
       if (error) throw error;
       if (wasCompleted) completed.delete(id); else completed.add(id);
+      if (!wasCompleted && saved.has(id)) {
+        const { error: unsaveError } = await client.from('saved_questions').delete().eq('user_id', user.id).eq('question_id', id);
+        if (unsaveError) {
+          updateProgress();
+          throw new Error('Marked complete, but could not remove from Saved. Please try again.');
+        }
+        saved.delete(id);
+      }
+      message.textContent = '';
       updateProgress();
       window.mrrTrack?.(wasCompleted ? 'quiz_restore_question' : 'quiz_mark_completed', { question_id: id });
       display();
@@ -122,6 +133,7 @@ for (const card of cards) {
       message.textContent = `Could not save: ${error.message || 'please try again'}`;
     } finally {
       button.disabled = false;
+      saveButton.disabled = false;
     }
   });
   saveButton.addEventListener('click', async () => {
